@@ -13,10 +13,11 @@ end
 
 haproxy_backend 'servers' do
   server [
-  	'web1 192.168.10.43:80 maxconn 32'
+    'web1 192.168.10.43:80 maxconn 32',
+    'web2 192.168.10.44:80 maxconn 32']
 end
 
 
 haproxy_service 'haproxy' do
-	subscribes :reload, 'template[/etc/haproxy/haproxy.cfg]', :immediately
+	 subscribes :reload, 'template[/etc/haproxy/haproxy.cfg]', :immediately
 end
